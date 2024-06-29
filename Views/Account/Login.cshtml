@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div style="text-align: center; margin-top: 50px;">
+    <h2>Login</h2>
+    <form method="post" action="/Account/Login">
+        <div>
+            <input type="email" name="Email" placeholder="Email" required />
+        </div>
+        <div>
+            <input type="password" name="Password" placeholder="Password" required />
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <a href="/Account/Register"><button>Register as User</button></a>
+    <a href="/Account/Register?role=special"><button>Register as Representative</button></a>
+</div>
