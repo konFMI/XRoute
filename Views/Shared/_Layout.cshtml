@@ -7,41 +7,49 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="/">XRoute</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/About">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <nav class="navbar">
+        <a href="/" class="brand">XRoute</a>
+        <div class="nav-links">
+            @if (User?.Identity?.IsAuthenticated == true)
+            {
+                <a href="/News" class="button">News Feed</a>
+                <a href="/Route" class="button">Routes</a>
+                @if (User.IsInRole("Representative"))
+                {
+                    <a href="/Route/Create" class="button">Add Route</a>
+                }
+                <a href="/UserSettings" class="button">User Settings</a>
+                <form id="logoutForm" action="/Account/Logout" method="post" style="display:inline;">
+                    <button type="submit" class="button">Logout</button>
+                </form>
+                <div class="user-role">
+                    @if (User.IsInRole("Representative"))
+                    {
+                        <p>Logged in as: Representative</p>
+                    }
+                    else if (User.IsInRole("Normal"))
+                    {
+                        <p>Logged in as: Normal User</p>
+                    }
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - XRoute - <a href="/Privacy">Privacy</a>
+            }
+            else
+            {
+                <a href="/Account/Login" class="button">Sign In</a>
+            }
         </div>
+    </nav>
+    <div class="container main-content">
+        @RenderBody()
+    </div>
+    <footer class="footer">
+        &copy; 2024 - XRoute - <a href="/Privacy" style="color: white;">Privacy</a>
+        <a href="/About" style="color: white;">About</a>
     </footer>
-
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

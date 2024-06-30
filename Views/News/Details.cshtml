@@ -1,0 +1,13 @@
+﻿@model XRoute.Models.News
+
+@{
+    ViewData["Title"] = "News Details";
+}
+
+<h2>@Model.Title</h2>
+
+<p>@Model.Content</p>
+
+<p><small>Posted by @Model.RepresentativeUsername on @Model.DatePosted</small></p>
+
+<a href="/News" class="button">Back to News Feed</a>

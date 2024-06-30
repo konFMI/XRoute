@@ -1,0 +1,43 @@
+﻿@model XRoute.ViewModels.RegisterRepresentativeViewModel
+
+@{
+    ViewData["Title"] = "Register as Representative";
+}
+
+<div class="text-center">
+    <h2>Register as Representative</h2>
+    <form asp-action="RegisterRepresentative" method="post">
+        <div class="form-group">
+            <label asp-for="Username">Username</label>
+            <input type="text" class="form-control" asp-for="Username" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input type="email" class="form-control" asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input type="password" class="form-control" asp-for="Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProfilePictureUrl">Profile Picture URL</label>
+            <input type="text" class="form-control" asp-for="ProfilePictureUrl" />
+            <span asp-validation-for="ProfilePictureUrl" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CompanyName">Company Name</label>
+            <input type="text" class="form-control" asp-for="CompanyName" />
+            <span asp-validation-for="CompanyName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CompanyAddress">Company Address</label>
+            <input type="text" class="form-control" asp-for="CompanyAddress" />
+            <span asp-validation-for="CompanyAddress" class="text-danger"></span>
+        </div>
+        <button type="submit" class="button">Register</button>
+    </form>
+</div>
+    

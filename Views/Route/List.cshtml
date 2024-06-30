@@ -1,0 +1,18 @@
+﻿@model IEnumerable<XRoute.Models.Route>
+
+@{
+    ViewData["Title"] = "Routes";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@foreach (var route in Model)
+{
+    <div class="route-item">
+        <h3>@route.Name</h3>
+        <p>From: @route.StartLocation</p>
+        <p>To: @route.EndLocation</p>
+        <p>Category: @route.Category</p>
+        <p><small>Added by @route.RepresentativeUsername on @route.DateAdded</small></p>
+    </div>
+}

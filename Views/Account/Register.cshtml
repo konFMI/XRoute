@@ -1,12 +1,10 @@
 @{
     ViewData["Title"] = "Register";
-    var role = Context.Request.Query["role"].ToString() ?? "user";
 }
 
-<div style="text-align: center; margin-top: 50px;">
-    <h2>Register as @(role == "special" ? "Representative" : "User")</h2>
-    <form method="post" action="/Account/Register">
-        <input type="hidden" name="Role" value="@role" />
+<div class="text-center">
+    <h2>Register</h2>
+    <form asp-action="Register" method="post">
         <div>
             <input type="text" name="Username" placeholder="Username" required />
         </div>
@@ -15,6 +13,13 @@
         </div>
         <div>
             <input type="password" name="Password" placeholder="Password" required />
+        </div>
+        <div>
+            <select name="Role" required>
+                <option value="Normal">Normal User</option>
+                <option value="Representative">Representative</option>
+                <option value="Administrator">Administrator</option>
+            </select>
         </div>
         <button type="submit">Register</button>
     </form>
