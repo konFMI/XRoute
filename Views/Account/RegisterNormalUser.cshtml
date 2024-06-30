@@ -1,12 +1,17 @@
-@model XRoute.ViewModels.LoginViewModel
+﻿@model XRoute.ViewModels.RegisterNormalUserViewModel
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Register as Normal User";
 }
 
 <div class="text-center">
-    <h2>Login</h2>
-    <form asp-action="Login" method="post">
+    <h2>Register as Normal User</h2>
+    <form asp-action="RegisterNormalUser" method="post">
+        <div class="form-group">
+            <label asp-for="Username">Username</label>
+            <input type="text" class="form-control" asp-for="Username" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
         <div class="form-group">
             <label asp-for="Email">Email</label>
             <input type="email" class="form-control" asp-for="Email" />
@@ -17,11 +22,6 @@
             <input type="password" class="form-control" asp-for="Password" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
-        <button type="submit" class="button">Login</button>
+        <button type="submit" class="button">Register</button>
     </form>
-    <hr />
-    <div class="register-options">
-        <a href="/Account/RegisterNormalUser" class="button">Register as Normal User</a>
-        <a href="/Account/RegisterRepresentative" class="button">Register as Representative</a>
-    </div>
 </div>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<XRoute.Models.News>
+
+@{
+    ViewData["Title"] = "News Feed";
+}
+
+<h2>News Feed</h2>
+
+@if (User.IsInRole("Representative"))
+{
+    <a href="/News/Create" class="button">Add News</a>
+}
+
+@foreach (var newsItem in Model)
+{
+    <div class="news-item">
+        <h3>@newsItem.Title</h3>
+        <p>@newsItem.Content</p>
+        <p><small>Posted by @newsItem.RepresentativeUsername on @newsItem.DatePosted</small></p>
+        <a href="/News/Details/@newsItem.Id" class="button">View Details</a>
+        @if (User.IsInRole("Representative"))
+        {
+            <form asp-action="Delete" method="post" style="display:inline;">
+                <input type="hidden" name="id" value="@newsItem.Id" />
+                <button type="submit" class="button">Delete</button>
+            </form>
+        }
+    </div>
+}
